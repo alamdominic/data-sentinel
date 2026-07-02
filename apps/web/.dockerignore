@@ -1,0 +1,8 @@
+node_modules/
+dist/
+tests/
+.env
+.env.example
+tsconfig.tsbuildinfo
+README.md
+coverage/

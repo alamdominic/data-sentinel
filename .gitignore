@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+
+# Node
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# IDE / OS
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+
+# Instrucciones / asistentes de desarrollo con IA (no se publican)
+.claude/
+.cursor/
+.cursorrules
+.aider*
+.windsurfrules
+.github/copilot-instructions.md
+CLAUDE.md
+AGENTS.md
+GEMINI.md
+.continue/
+
+# Markdown: solo se publican READMEs y la carpeta docs/.
+# Todo lo demas (specs, prompts, notas de desarrollo) queda fuera.
+*.md
+!README.md
+!docs/**

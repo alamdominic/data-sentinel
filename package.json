@@ -1,0 +1,16 @@
+{
+  "name": "datasentinel",
+  "version": "1.0.0",
+  "private": true,
+  "description": "DATA SENTINEL - Plataforma web de monitoreo para procesos ETL",
+  "workspaces": [
+    "apps/web",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:web": "npm run dev --workspace @datasentinel/web",
+    "build:web": "npm run build --workspace @datasentinel/web",
+    "test:web": "npm run test --workspace @datasentinel/web",
+    "lint:web": "npm run lint --workspace @datasentinel/web"
+  }
+}

@@ -1,0 +1,14 @@
+node_modules/
+**/node_modules/
+**/dist/
+**/.venv/
+**/__pycache__/
+.git/
+.claude/
+docs/
+steps/
+scripts/
+*.md
+apps/api/tests/
+db/
+ddl_base.sql
