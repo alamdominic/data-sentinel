@@ -102,8 +102,9 @@ docs/           Manuales de instalación, despliegue y operación (se publican)
 | [docs/MANUAL.md](docs/MANUAL.md)                         | **Primera vez** — instalación local paso a paso desde cero              |
 | [apps/api/README.md](apps/api/README.md)                 | Backend: arquitectura, variables de entorno, tests, notas de producción |
 | [apps/web/README.md](apps/web/README.md)                 | Frontend: desarrollo, build, gotcha de variables `VITE_*`, despliegue   |
-| [docs/DEPLOY_VPS.md](docs/DEPLOY_VPS.md)                 | Despliegue en VPS sin contenedores (nginx, systemd, TLS, firewall)      |
-| [docs/DEPLOY_DOCKER.md](docs/DEPLOY_DOCKER.md)           | Despliegue con Docker (compose, inyección de env vars en runtime)       |
+| [docs/DEPLOY_DOCKER.md](docs/DEPLOY_DOCKER.md)           | Cómo está armado el empaquetado Docker, build y prueba local           |
+| [docs/DOCKER_HUB_SETUP.md](docs/DOCKER_HUB_SETUP.md)     | Conectar Docker Hub a tu computadora (cuenta, token, login)             |
+| [docs/DEPLOY_VPS.md](docs/DEPLOY_VPS.md)                 | **Runbook de producción real**: push a Docker Hub + pull en el VPS (nginx host, TLS, firewall) |
 | [docs/CREAR_USUARIOS.md](docs/CREAR_USUARIOS.md)         | Cómo dar de alta un usuario                                             |
 | [docs/CAMBIAR_CONTRASENA.md](docs/CAMBIAR_CONTRASENA.md) | Cómo resetear la contraseña de un usuario                               |
 
@@ -137,7 +138,7 @@ copy apps\web\.env.example apps\web\.env
 npm run dev:web           # http://localhost:5173
 ```
 
-Para producción, sigue [docs/DEPLOY_VPS.md](docs/DEPLOY_VPS.md) o [docs/DEPLOY_DOCKER.md](docs/DEPLOY_DOCKER.md).
+Para producción: [docs/DEPLOY_DOCKER.md](docs/DEPLOY_DOCKER.md) explica el empaquetado, [docs/DEPLOY_VPS.md](docs/DEPLOY_VPS.md) es el runbook real (Docker Hub + VPS).
 
 ---
 

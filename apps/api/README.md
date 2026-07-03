@@ -70,24 +70,17 @@ Cobertura mínima exigida: 80% en `domain` + `application` (lógica de negocio).
 
 ## Despliegue en producción
 
-Con Docker (recomendado): [../../docs/DEPLOY_DOCKER.md](../../docs/DEPLOY_DOCKER.md) — ver [Dockerfile](Dockerfile), variables inyectadas en runtime al crear el contenedor (sin rebuild por cambio de config).
+Se empaqueta con Docker — ver [Dockerfile](Dockerfile), variables inyectadas en runtime al crear el contenedor (sin rebuild por cambio de config):
 
-Sin contenedores, VPS con nginx + systemd: [../../docs/DEPLOY_VPS.md](../../docs/DEPLOY_VPS.md). Resumen de esta capa:
+- [../../docs/DEPLOY_DOCKER.md](../../docs/DEPLOY_DOCKER.md): cómo está armado el empaquetado, build y prueba local.
+- [../../docs/DEPLOY_VPS.md](../../docs/DEPLOY_VPS.md): runbook real de producción (build + push a Docker Hub, pull en el VPS).
 
-1. Clonar el repo en el servidor, crear el venv e instalar dependencias igual que en desarrollo (sin `[dev]` si no vas a correr tests ahí):
-   ```bash
-   cd apps/api
-   python3.11 -m venv .venv
-   .venv/bin/pip install -e .
-   ```
-2. Crear `.env` con credenciales reales y un `AUTH_SECRET_KEY` fuerte generado en el servidor (no reutilices el de desarrollo).
-3. **No usar `--reload` en producción.** Correr con varios workers:
-   ```bash
-   .venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000 --workers 4
-   ```
-   El backend escucha solo en `127.0.0.1` — nginx es quien lo expone al exterior por HTTPS (ver guía VPS).
-4. Gestionar el proceso con **systemd** (arranca solo, se reinicia si falla) — unit file de ejemplo en la guía VPS.
-5. `CORS_ALLOWED_ORIGINS` debe apuntar al dominio real del frontend.
+Resumen de esta capa:
+
+1. La imagen (`Dockerfile`) corre `uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 4` — sin `--reload`, con 4 workers. No necesita venv ni Python instalado fuera del contenedor.
+2. Las variables (`DB_HOST`, `AUTH_SECRET_KEY`, etc.) se inyectan al crear el contenedor via `docker compose`, no se hornean en la imagen — generar un `AUTH_SECRET_KEY` nuevo para producción, no reutilizar el de desarrollo.
+3. El contenedor no publica ningún puerto al host — solo es alcanzable desde el contenedor `web` (proxy interno) por la red de Docker.
+4. `CORS_ALLOWED_ORIGINS` debe apuntar al dominio real del frontend en producción.
 
 ---
 

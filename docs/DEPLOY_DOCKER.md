@@ -1,6 +1,8 @@
-# DATA SENTINEL — Despliegue con Docker
+# DATA SENTINEL — Empaquetado con Docker (build y prueba local)
 
-Dos contenedores (`api` + `web`) orquestados con `docker compose`. Alternativa a [DEPLOY_VPS.md](DEPLOY_VPS.md) (nginx + systemd sin contenedores) — usa esta guía si vas a desplegar con Docker.
+Dos contenedores (`api` + `web`) orquestados con `docker compose`. Esta guía explica **cómo está armado** el empaquetado Docker (Dockerfiles, inyección de variables en runtime, cómo construir y probar todo en tu máquina).
+
+> Para llevar estas mismas imágenes a producción en un VPS real (build + push a Docker Hub, pull en el servidor, nginx + TLS), ver [DEPLOY_VPS.md](DEPLOY_VPS.md) — es el siguiente paso después de esta guía.
 
 ---
 
