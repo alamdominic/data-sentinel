@@ -56,11 +56,11 @@ Usuario becario.bi@lazarza.com.mx creado/actualizado (role=admin).
 
 ## Argumentos
 
-| Posición | Nombre | Obligatorio | Descripción |
-|---|---|---|---|
-| 1 | correo | Sí | Debe terminar en `@lazarza.com.mx` (o el dominio configurado en `AUTH_ALLOWED_EMAIL_DOMAIN`). Se rechaza cualquier otro dominio |
-| 2 | nombre completo | Sí | Entre comillas si tiene espacios |
-| 3 | rol | No (default `viewer`) | `viewer` o `admin`. **Hoy ambos tienen los mismos permisos** — es solo una etiqueta descriptiva, no hay control de acceso diferenciado todavía |
+| Posición | Nombre          | Obligatorio           | Descripción                                                                                                                                    |
+| -------- | --------------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1        | correo          | Sí                    | Debe terminar en `@lazarza.com.mx` (o el dominio configurado en `AUTH_ALLOWED_EMAIL_DOMAIN`). Se rechaza cualquier otro dominio                |
+| 2        | nombre completo | Sí                    | Entre comillas si tiene espacios                                                                                                               |
+| 3        | rol             | No (default `viewer`) | `viewer` o `admin`. **Hoy ambos tienen los mismos permisos** — es solo una etiqueta descriptiva, no hay control de acceso diferenciado todavía |
 
 ---
 
@@ -98,11 +98,11 @@ Un usuario inactivo no puede iniciar sesión aunque su contraseña sea correcta.
 
 ## Errores comunes
 
-| Mensaje | Causa | Solución |
-|---|---|---|
-| `ForbiddenDomainError` / rechaza el correo | El correo no termina en `@lazarza.com.mx` | Usa un correo institucional |
-| `DATABASE_ADMIN_URL no definida. Ejecuta manualmente:` | Falta configurar `scripts/.env` | Configúrala (ver arriba), o copia el SQL impreso y ejecútalo tú mismo |
-| `Las contrasenas no coinciden` | Escribiste algo distinto en la confirmación | Vuelve a correr el script |
-| Error de conexión a Postgres | Credenciales o red incorrectas en `DATABASE_ADMIN_URL` | Verifica host/usuario/password/puerto |
+| Mensaje                                                | Causa                                                  | Solución                                                              |
+| ------------------------------------------------------ | ------------------------------------------------------ | --------------------------------------------------------------------- |
+| `ForbiddenDomainError` / rechaza el correo             | El correo no termina en `@lazarza.com.mx`              | Usa un correo institucional                                           |
+| `DATABASE_ADMIN_URL no definida. Ejecuta manualmente:` | Falta configurar `scripts/.env`                        | Configúrala (ver arriba), o copia el SQL impreso y ejecútalo tú mismo |
+| `Las contrasenas no coinciden`                         | Escribiste algo distinto en la confirmación            | Vuelve a correr el script                                             |
+| Error de conexión a Postgres                           | Credenciales o red incorrectas en `DATABASE_ADMIN_URL` | Verifica host/usuario/password/puerto                                 |
 
 Relacionado: [CAMBIAR_CONTRASENA.md](CAMBIAR_CONTRASENA.md) — para cambiar la contraseña de un usuario que ya existe sin tocar su nombre/rol.
